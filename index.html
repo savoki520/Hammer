@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>锤子商城</title>
+    <script src="js/vue.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <!--<script src="js/jquery.js"></script>-->
+    <script src="js/index.js"></script>
+</head>
+<body>
+<!--头部导航栏-->
+    <header class="header">
+        <div class="header_one">
+            <div class="header_one_imgbox">
+                <div class="header_one_img"></div>
+            </div>
+        </div>
+        <div class="header_two">
+            <div class="header_two_nav">
+                <ul id="nav" class="navul">
+                    <li v-for="nav in nav" class="navli" v-bind:class="{navselcet:nav.select}" @click="navli(nav.id)">{{nav.name}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="header_three">
+            <div class="header_three_imgbox">
+                <div class="header_three_imgone"></div>
+                <div class="header_three_imgtwo"></div>
+            </div>
+        </div>
+    </header>
+<!--主体-->
+    <section class="content">
+        <div class="cnav" id="c_nav">
+            <!--导航栏-->
+            <div class="cnav_box">
+                <ul  class="c_navul">
+                    <li class="c_navli" v-for="nav in nav" @mouseover="over(nav.id)">{{nav.name}}</li>
+                </ul>
+                <div class="cnav_select">
+                    <div class="cnav_select_img"></div>
+                    <input type="text" class="cnav_select_input" placeholder="请输入搜索的商品">
+                    <div class="cnav_select_label" >T恤</div>
+                </div>
+            </div>
+            <!--导航栏分类弹出框-->
+            <div class="nav_content"  v-show="navc" @mouseout="out(nav.id)" v-bind:class="{navcc:navcc}">
+                <!--手机-->
+                <div class="nav_ctwo" v-if="type === 1">
+                    <div class="ctwo_o" v-for="phone in phone">
+                        <div class="ctwo_img"></div>
+                        <div class="ctwo_name">{{phone.name}}</div>
+                        <div class="ctwo_amout">{{phone.amout}}</div>
+                    </div>
+                </div>
+                <!--服务-->
+                <div class="nav_cthree" v-else-if="type === 5">
+                    <div class="cthree_o" v-for="ser in service">{{ser.name}}</div>
+                </div>
+                <!--首页、官方配件、服饰箱包、畅呼吸-->
+                <div class="nav_cone" v-else>
+                    <!--首页子集-->
+                    <div class="cone_o" v-if="type === 0">
+                        <ul class="cone_ul" v-for="cate in category[type].first">{{cate.f_name}}
+                            <li class="cone_li" v-for="one in cate.secend">
+                                <img class="cone_li_img" v-bind:src="one.img">
+                                <div class="cone_li_name">{{one.s_name}}</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--非首页子集-->
+                    <div class="cone_o" v-else>
+                        <ul class="cone_ul" v-for="cate in category[type-1].first">{{cate.f_name}}
+                            <li class="cone_li" v-for="one in cate.secend">
+                                <img class="cone_li_img" v-bind:src="one.img">
+                                <div class="cone_li_name">{{one.s_name}}</div>
+                            </li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--主体内容部分-->
+        <div class="main" id="main">
+            <!--主体内容首页轮播图-->
+            <div class="main_one">
+                <!--加载轮播图-->
+                <div class="main_one_img">
+                    <img class="main_one_url" v-bind:src="img.url" v-for="img in img" v-show="img.show">
+                </div>
+                <!--加载轮播图选择圆圈-->
+                <div class="main_one_point">
+                    <span class="main_one_p" v-for="img in img" v-bind:class="{main_one_pp:img.show}"></span>
+                </div>
+            </div>
+            <!--主体内容首页热门商品-->
+            <div class="main_two">
+                <div class="main_two_title">
+                    <span>热门商品</span>
+                    <div class="main_two_fx">
+                        <div class="left">
+                            <img src="image/index/left.png">
+                        </div>
+                        <div class="right">
+                            <img src="image/index/right.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="main_two_content">
+                    <div class="two_item"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!--底部-->
+    <footer></footer>
+</body>
+</html>
