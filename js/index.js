@@ -57,7 +57,7 @@ window.onload = function () {
                 this.nav[index].select = true;
             }
         }
-    }),
+    })
     new Vue({
             el:'#c_nav',
             data:{
@@ -360,19 +360,32 @@ window.onload = function () {
                         id:2,
                         name:'发起售后'
                     }
-                ]
+                ],
+                cnavp:false
             },
-            methods:{
-                over:function (id) {//弹框出现，动画不动
+            methods: {
+                over: function (id) {//弹框出现，动画不动
                     this.navc = true;
                     this.navcc = false;
                     this.type = id;
                 },
-                out:function () {//弹框消失，动画出现
-                  this.navcc = true
+                out: function () {//弹框消失，动画出现
+                    this.navcc = true
+                },
+                paperscroll: function () {
+                    var top = window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop;
+                    if(top>45){
+                        this.cnavp = true;
+                    }
+                    else {
+                        this.cnavp =false
+                    }
                 }
+            },
+            created:function () {
+                window.addEventListener('scroll', this.paperscroll,true);
             }
-        }),
+        })
     new Vue({
         el:'#main',
         data:{
@@ -399,24 +412,30 @@ window.onload = function () {
                         {
                             id:0,
                             co:'rgba(12,,12,12,1)',
-                            img:''
+                            img:'',
+                            show:true
                         },
                         {
                             id:1,
                             co:'rgba(159,123,154,1)',
-                            img:''
+                            img:'',
+                            show:false
                         },
                         {
                             id:2,
                             co:'rgba(59,200,200,1)',
-                            img:''
+                            img:'',
+                            show:false
                         },
                         {
                             id:3,
                             co:'rgba(42,159,240,1)',
-                            img:''
+                            img:'',
+                            show:false
                         }
-                    ]
+                    ],
+                    s_co:'rgba(12,,12,12,1)',
+                    show:false
                 },
                 {
                     id:1,
@@ -427,24 +446,30 @@ window.onload = function () {
                         {
                             id:0,
                             co:'rgba(200,54,230,1)',
-                            img:''
+                            img:'',
+                            show:true
                         },
                         {
                             id:1,
                             co:'rgba(62,48,206,1)',
-                            img:''
+                            img:'',
+                            show:false
                         },
                         {
                             id:2,
                             co:'rgba(180,45,200,1)',
-                            img:''
+                            img:'',
+                            show:false
                         },
                         {
                             id:3,
                             co:'rgba(89,89,89,1)',
-                            img:''
+                            img:'',
+                            show:false
                         }
-                    ]
+                    ],
+                    s_co:'rgba(200,54,230,1)',
+                    show:false
                 },
                 {
                     id:2,
@@ -455,11 +480,126 @@ window.onload = function () {
                         {
                             id:0,
                             co:'rgba(46,255,255,1)',
-                            img:''
+                            img:'',
+                            show:true
                         }
-                    ]
+                    ],
+                    s_co:'rgba(46,255,255,1)',
+                    show:false
+                },
+                {
+                    id:3,
+                    name:'Smartisan T恤 皇帝的新装',
+                    intro:'',
+                    amout:'$149.00',
+                    color:[
+                        {
+                            id:0,
+                            co:'rgba(225,220,220,1)',
+                            img:'',
+                            show:true
+                        },
+                        {
+                            id:1,
+                            co:'rgba(10,10,10,1)',
+                            img:'',
+                            show:false
+                        },
+                        {
+                            id:2,
+                            co:'rgba(196,196,196,1)',
+                            img:'',
+                            show:false
+                        }
+                    ],
+                    s_co:'rgba(225,220,220,1)',
+                    show:false
+                },
+                {
+                    id:4,
+                    name:'坚果砖式蓝牙小音箱',
+                    intro:'一款设计出色、音质出众的随身音箱',
+                    amout:'$149.00',
+                    color:[
+                        {
+                            id:0,
+                            co:'rgba(196,196,196,1)',
+                            img:'',
+                            show:true
+                        },
+                        {
+                            id:1,
+                            co:'rgba(159,25,63,1)',
+                            img:'',
+                            show:false
+                        }
+                    ],
+                    s_co:'rgba(196,196,196,1)',
+                    show:false
+                },
+                {
+                    id:5,
+                    name:'Smartisan 半入耳式耳机',
+                    intro:'经典配色、专业调音、高品质麦克风',
+                    amout:'$59.00',
+                    color:[
+                        {
+                            id:0,
+                            co:'rgba(10,240,240,1)',
+                            img:'',
+                            show:true
+                        },
+                        {
+                            id:1,
+                            co:'rgba(255,255,255,1)',
+                            img:'',
+                            show:false
+                        },
+                        {
+                            id:2,
+                            co:'rgba(12,12,12,1)',
+                            img:'',
+                            show:false
+                        }
+                    ],
+                    s_co:'rgba(10,240,240,1)',
+                    show:false
+                },
+                {
+                    id:6,
+                    name:'坚果彩虹数据线',
+                    intro:'七彩配色随机发货，为生活增添一份小小惊喜',
+                    amout:'$39.00',
+                    color:[
+                        {
+                            id:0,
+                            co:'',
+                            img:'',
+                            show:true
+                        }
+                    ],
+                    s_co:'',
+                    show:false
+                },
+                {
+                    id:7,
+                    name:'Smartisan 双口&快充车载充电器',
+                    intro:'铝合金机身、双口&快充、智能调节',
+                    amout:'$79.00',
+                    color:[
+                        {
+                            id:0,
+                            co:'rgba(0,0,0,1)',
+                            img:'',
+                            show:true
+                        }
+                    ],
+                    s_co:'rgba(0,0,0,1)',
+                    show:false
                 }
-            ]
+            ],
+            wid:'',
+            lf:'0'
         },
         methods:{
             autpplay:function () {
@@ -471,13 +611,39 @@ window.onload = function () {
                 this.img[this.k].show = true;
             },
             play:function () {
-                setInterval(this.autpplay,3000)
+                setInterval(this.autpplay,3000);
+                var l = this.hot.length/4;
+                if(l>parseInt(l)){
+                    l = parseInt(l+1)
+                }
+                this.wid = l + '00%';
+            },
+            enter:function (id) {
+                this.hot[id].show = true
+            },
+            out:function (id) {
+                this.hot[id].show = false
+            },
+            liover:function (index,id) {
+                for(var i = 0;i<this.hot[index].color.length;i++){
+                    this.hot[index].color[i].show = false;
+                }
+                this.hot[index].color[id].show = true;
+                this.hot[index].s_co = this.hot[index].color[id].co
+            },
+            left:function () {
+                this.lf = '0%'
+            },
+            right:function () {
+                this.lf = '-100%'
             }
+
         },
         created:function () {
             this.play()
         }
     })
 };
+
 
 

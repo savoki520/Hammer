@@ -32,7 +32,7 @@
     </header>
 <!--主体-->
     <section class="content">
-        <div class="cnav" id="c_nav">
+        <div class="cnav" id="c_nav" :class="{cnav_po:cnavp}">
             <!--导航栏-->
             <div class="cnav_box">
                 <ul  class="c_navul">
@@ -98,17 +98,41 @@
                 <div class="main_two_title">
                     <span>热门商品</span>
                     <div class="main_two_fx">
-                        <div class="left">
+                        <div class="left" @click="left()">
                             <img src="image/index/left.png">
                         </div>
-                        <div class="right">
+                        <div class="right" @click="right()">
                             <img src="image/index/right.png">
                         </div>
                     </div>
                 </div>
-                <div class="main_two_content">
-                    <div class="two_item"></div>
+                <div class="main_two_content" v-bind:style="{width:wid,left:lf}">
+                    <div class="two_item" v-for="hot in hot" @mouseover='enter(hot.id)' @mouseout="out(hot.id)"
+                         v-bind:class="{two_item_anima:hot.show}">
+                        <div class="two_item_img" v-bind:style="{background:hot.s_co}"></div>
+                        <div class="two_item_title">{{hot.name}}</div>
+                        <div class="two_item_intro">{{hot.intro}}</div>
+                        <div class="two_item_colorbox">
+                            <ul class="color_ul">
+                                <li class="color_li" v-for="color in hot.color"
+                                    @mouseover="liover(hot.id,color.id)" v-bind:class="{color_li_active:color.show}">
+                                    <div class="color_li_div" v-bind:style="{background:color.co}"></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="two_item_amout">
+                            <span class="two_item_span" v-show="!hot.show">{{hot.amout}}</span>
+                            <div class="two_item_cc" v-show="hot.show">查看详情</div>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <!--服饰箱包-->
+            <div class="main_three">
+                <div class="main_three_title">
+                    <span>热门商品</span>
+                </div>
+                <div class="main_three_content"></div>
             </div>
         </div>
     </section>
