@@ -57,7 +57,7 @@ window.onload = function () {
                 this.nav[index].select = true;
             }
         }
-    })
+    });
     new Vue({
             el:'#c_nav',
             data:{
@@ -96,6 +96,7 @@ window.onload = function () {
                 navc:false,
                 navcc:false,
                 type:0,
+                sel:false,
                 category:[
                     {
                         id:0,
@@ -361,7 +362,34 @@ window.onload = function () {
                         name:'发起售后'
                     }
                 ],
-                cnavp:false
+                cnavp:false,
+                abc:[
+                    {
+                        id:0,
+                        name:'T恤',
+                        show:false
+                    },
+                    {
+                        id:1,
+                        name:'移动电源',
+                        show:false
+                    },
+                    {
+                        id:2,
+                        name:'卫衣',
+                        show:false
+                    },
+                    {
+                        id:3,
+                        name:'帆布鞋',
+                        show:false
+                    },
+                    {
+                        id:4,
+                        name:'保护套',
+                        show:false
+                    }
+                ]
             },
             methods: {
                 over: function (id) {//弹框出现，动画不动
@@ -380,12 +408,27 @@ window.onload = function () {
                     else {
                         this.cnavp =false
                     }
+                },
+                selover:function (id) {
+                    for(var i = 0;i<this.abc.length;i++){
+                        this.abc[i].show = false
+                    }
+                    this.abc[id].show = true
+                },
+                selout:function (id) {
+                    this.abc[id].show = false
+                },
+                foc:function () {
+                    this.sel = true
+                },
+                bl:function () {
+                    this.sel = false
                 }
             },
             created:function () {
                 window.addEventListener('scroll', this.paperscroll,true);
             }
-        })
+        });
     new Vue({
         el:'#main',
         data:{
@@ -411,7 +454,7 @@ window.onload = function () {
                     color:[
                         {
                             id:0,
-                            co:'rgba(12,,12,12,1)',
+                            co:'rgba(159,255,154,1)',
                             img:'',
                             show:true
                         },
@@ -434,7 +477,7 @@ window.onload = function () {
                             show:false
                         }
                     ],
-                    s_co:'rgba(12,,12,12,1)',
+                    s_co:'rgba(159,255,154,1)',
                     show:false
                 },
                 {
@@ -599,7 +642,715 @@ window.onload = function () {
                 }
             ],
             wid:'',
-            lf:'0'
+            lf:'0',
+            commodity:[
+                {
+                    id:0,
+                    name:'服饰箱包',
+                    titleimg:'image/index/v_1.jpg',
+                    commod:[
+                        {
+                            id:0,
+                            name:'地平线8号28寸旅行箱',
+                            intro:'一款让旅行箱挑剔者满意的旅行箱',
+                            amout:'$599.00',
+                            color:[
+                                {
+                                    id:0,
+                                    co:'rgba(0,0,0,1)',
+                                    img:'',
+                                    show:true
+                                },
+                                {
+                                    id:1,
+                                    co:'rgba(59,16,200,1)',
+                                    img:'',
+                                    show:false
+                                }
+                            ],
+                            show:false,
+                            s_co:'rgba(0,0,0,1)'
+                        },
+                        {
+                            id:1,
+                            name:'地平线8号全功能城市背包Atlas X',
+                            intro:'一款通行城市的全功能双肩包',
+                            amout:'$299.00',
+                            show:false,
+                            s_co:'rgba(0,0,0,1)',
+                            color:[
+                                {
+                                    id:0,
+                                    co:'rgba(0,0,0,1)',
+                                    img:'',
+                                    show:true
+                                },
+                                {
+                                    id:1,
+                                    co:'rgba(16,85,24,1)',
+                                    img:'',
+                                    show:false
+                                }
+                            ]
+                        },
+                        {
+                            id:2,
+                            name:'Smartisan T恤 薛定谔',
+                            intro:'',
+                            amout:'$149.00',
+                            show:false,
+                            s_co:'rgba(15,26,26,1)',
+                            color:[
+                                {
+                                    id:0,
+                                    co:'rgba(15,26,26,1)',
+                                    img:'',
+                                    show:true
+                                },
+                                {
+                                    id:1,
+                                    co:'rgba(255,255,255,1)',
+                                    img:'',
+                                    show:false
+                                },
+                                {
+                                    id:2,
+                                    co:'rgba(50,50,50,1)',
+                                    img:'',
+                                    show:false
+                                }
+                            ]
+                        },
+                        {
+                            id:3,
+                            name:'Smatyisan T恤 丑小鸭',
+                            intro:'',
+                            amout:'$149.00',
+                            show:false,
+                            s_co:'rgba(0,0,0,1)',
+                            color:[
+                                {
+                                    id:0,
+                                    co:'rgba(0,0,0,1)',
+                                    img:'',
+                                    show:true
+                                },
+                                {
+                                    id:1,
+                                    co:'rgba(255,255,255,1)',
+                                    img:'',
+                                    show:false
+                                },
+                                {
+                                    id:2,
+                                    co:'rgba(59,59,59,1)',
+                                    img:'',
+                                    show:false
+                                },
+                                {
+                                    id:3,
+                                    co:'rgba(196,196,196,1)',
+                                    img:'',
+                                    show:false
+                                },
+                                {
+                                    id:4,
+                                    co:'rgba(56,255,56,1)',
+                                    img:'',
+                                    show:false
+                                },
+                                {
+                                    id:5,
+                                    co:'rgba(120,120,120,1)',
+                                    img:'',
+                                    show:false
+                                }
+                            ]
+                        },
+                        {
+                            id:4,
+                            name:'Smartisan T恤 毕加索',
+                            intro:'',
+                            amout:'$149.00',
+                            show:false,
+                            s_co:'rgba(30,30,30,1)',
+                            color:[
+                                {
+                                    id:0,
+                                    co:'rgba(30,30,30,1)',
+                                    img:'',
+                                    show:true
+                                },
+                                {
+                                    id:1,
+                                    co:'rgba(90,90,90,1)',
+                                    img:'',
+                                    show:false
+                                }
+                            ]
+                        },
+                        {
+                            id:5,
+                            name:'Smartisan T恤 皇帝的新装',
+                            intro:'',
+                            amout:'$149.00',
+                            show:false,
+                            s_co:'rgba(255,255,255,1)',
+                            color:[
+                                {
+                                    id:0,
+                                    co:'rgba(255,255,255,1)',
+                                    img:'',
+                                    show:true
+                                },
+                                {
+                                    id:1,
+                                    co:'rgba(100,100,100,1)',
+                                    img:'',
+                                    show:false
+                                },
+                                {
+                                    id:2,
+                                    co:'rgba(220,220,220,1)',
+                                    img:'',
+                                    show:false
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id:1,
+                    name:'畅呼吸系列产品',
+                    titleimg:'image/index/v_2.jpg',
+                    commod:[
+                        {
+                            id:0,
+                            name:'畅呼吸智能空气净化器 超级除甲醛版',
+                            intro:'超强除甲醛能力，超低噪音，智能操控',
+                            amout:'$2999.00',
+                            show:false,
+                            s_co:'rgba(255,255,255,1)',
+                            color:[
+                                {
+                                    id:0,
+                                    co:'rgba(255,255,255,1)',
+                                    img:'',
+                                    show:true
+                                }
+                            ]
+                        },
+                        {
+                            id:1,
+                            name:'畅呼吸除霾除甲醛高效复合滤芯',
+                            intro:'精选双层防护材质、过滤更精细、去味更有效',
+                            amout:'$699.00',
+                            show:false,
+                            s_co:'rgba(255,255,255,1)',
+                            color:[
+                                {
+                                    id:0,
+                                    co:'rgba(255,255,255,1)',
+                                    img:'',
+                                    show:true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id:2,
+                    name:'官方精选配件',
+                    titleimg:'image/index/v_3.jpg',
+                    commod:[
+                        {
+                            id:0,
+                            name:'Smartisan 耳机转接头',
+                            intro:'即插即用、全面兼容',
+                            amout:'$19.00',
+                            show:false,
+                            s_co:'rgba(255,255,255,1)',
+                            color:[
+                                {
+                                    id:0,
+                                    co:'rgba(255,255,255,1)',
+                                    img:'',
+                                    show:true
+                                }
+                            ]
+                        },
+                        {
+                            id:1,
+                            name:'Smartisan 双口&快充车载充电器',
+                            intro:'铝合金机身、双口&快充、智能调节',
+                            amout:'$79.00',
+                            show:false,
+                            s_co:'rgba(0,0,0,1)',
+                            color:[
+                                {
+                                    id:0,
+                                    co:'rgba(0,0,0,1)',
+                                    img:'',
+                                    show:true
+                                }
+                            ]
+                        },
+                        {
+                            id:2,
+                            name:'Smartisan 半入耳式耳机',
+                            intro:'经典配色、专业调音、高品质麦克风',
+                            amout:'$59.00',
+                            show:false,
+                            s_co:'rgba(255,0,255,1)',
+                            color:[
+                                {
+                                    id:0,
+                                    co:'rgba(255,0,255,1)',
+                                    img:'',
+                                    show:true
+                                },
+                                {
+                                    id:1,
+                                    co:'rgba(30,30,30,1)',
+                                    img:'',
+                                    show:false
+                                },
+                                {
+                                    id:2,
+                                    co:'rgba(230,230,230,1)',
+                                    img:'',
+                                    show:false
+                                }
+                            ]
+                        },
+                        {
+                            id:3,
+                            name:'坚果彩虹数据线',
+                            intro:'七彩配色随机发货，为生活',
+                            amout:'$19.00',
+                            show:false,
+                            s_co:'',
+                            color:[]
+                        },
+                        {
+                            id:4,
+                            name:'坚果“电池形电池”移动电源',
+                            intro:'别具一格的“全能型”移动电源',
+                            amout:'$69.00',
+                            show:false,
+                            s_co:'rgba(255,0,255,1)',
+                            color:[
+                                {
+                                    id:0,
+                                    co:'rgba(255,0,255,1)',
+                                    img:'',
+                                    show:true
+                                },
+                                {
+                                    id:1,
+                                    co:'rgba(60,60,60,1)',
+                                    img:'',
+                                    show:false
+                                },
+                                {
+                                    id:2,
+                                    co:'rgba(120,0,45,1)',
+                                    img:'',
+                                    show:false
+                                },
+                                {
+                                    id:3,
+                                    co:'rgba(160,160,160,1)',
+                                    img:'',
+                                    show:false
+                                }
+                            ]
+                        },
+                        {
+                            id:5,
+                            name:'Smartisan 快充移动电源 10000mAh',
+                            intro:'10000mAh 双向快充、轻盈便携、高标准安全保护',
+                            amout:'$129.00',
+                            show:false,
+                            s_co:'rgba(95,112,233,1)',
+                            color:[
+                                {
+                                    id:0,
+                                    co:'rgba(95,112,233,1)',
+                                    img:'',
+                                    show:true
+                                },
+                                {
+                                    id:1,
+                                    co:'rgba(210,210,210,1)',
+                                    img:'',
+                                    show:false
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id:3,
+                    name:'坚果手机及配件',
+                    titleimg:'image/index/v_3.jpg',
+                    commod:[
+                        {
+                            id:0,
+                            name:'坚果 Pro 2S',
+                            intro:'双系统、无限屏',
+                            amout:'$1998.00',
+                            show:false,
+                            s_co:'rgba(50,50,50,1)',
+                            color:[
+                                {
+                                    id:0,
+                                    co:'rgba(50,50,50,1)',
+                                    img:'',
+                                    show:true
+                                },
+                                {
+                                    id:1,
+                                    co:'rgba(100,100,100,1)',
+                                    img:'',
+                                    show:false
+                                },
+                                {
+                                    id:2,
+                                    co:'rgba(190,25,105,1)',
+                                    img:'',
+                                    show:false
+                                },
+                                {
+                                    id:3,
+                                    co:'rgba(220,220,220,1)',
+                                    img:'',
+                                    show:false
+                                }
+                            ]
+                        },
+                        {
+                            id:1,
+                            name:'坚果 R1',
+                            intro:'次时代旗舰手机，内蒙来自未来的“电脑”',
+                            amout:'$3799.00',
+                            show:false,
+                            s_co:'rgba(0,0,0,1)',
+                            color:[
+                                {
+                                    id:0,
+                                    co:'rgba(0,0,0,1)',
+                                    img:'',
+                                    show:true
+                                },
+                                {
+                                    id:1,
+                                    co:'rgba(220,220,220,1)',
+                                    img:'',
+                                    show:false
+                                },
+                                {
+                                    id:2,
+                                    co:'rgba(60,60,60,1)',
+                                    img:'',
+                                    show:false
+                                }
+                            ]
+                        },
+                        {
+                            id:2,
+                            name:'坚果彩虹数据线',
+                            intro:'七彩配色随机发货，为生活增添一份小小惊喜',
+                            amout:'$39.00',
+                            show:false,
+                            s_co:'',
+                            color:[]
+                        },
+                        {
+                            id:3,
+                            name:'坚果Type-C Type-C数据线',
+                            intro:'TPE环保材质，PTC过温保护',
+                            amout:'$39.00',
+                            show:false,
+                            s_co:'rgba(255,255,255,1)',
+                            color:[
+                                {
+                                    id:0,
+                                    co:'rgba(255,255,255,1)',
+                                    img:'',
+                                    show:true
+                                }
+                            ]
+                        },
+                        {
+                            id:4,
+                            name:'坚果砖式蓝牙小音箱',
+                            intro:'一款设计出色、音质出众的随身音箱',
+                            amout:'$149.00',
+                            show:false,
+                            s_co:'rgba(202,202,202,1)',
+                            color:[
+                                {
+                                    id:0,
+                                    co:'rgba(202,202,202,1)',
+                                    img:'',
+                                    show:true
+                                },
+                                {
+                                    id:1,
+                                    co:'rgba(169,16,169,1)',
+                                    img:'',
+                                    show:false
+                                }
+                            ]
+                        },
+                        {
+                            id:5,
+                            name:'Smartisan 半入耳式耳机',
+                            intro:'经典配色、专业调音、高品质麦克风',
+                            amout:'$59.00',
+                            show:false,
+                            s_co:'rgba(255,200,0,1)',
+                            color:[
+                                {
+                                    id:0,
+                                    co:'rgba(255,200,0,1)',
+                                    img:'',
+                                    show:true
+                                },
+                                {
+                                    id:1,
+                                    co:'rgba(20,20,20,1)',
+                                    img:'',
+                                    show:false
+                                },
+                                {
+                                    id:2,
+                                    co:'rgba(220,220,220,1)',
+                                    img:'',
+                                    show:false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            forum:[
+                {
+                    id:0,
+                    name:'[开箱]坚果Pro 2S内敛骚蓝惊艳炫光',
+                    intro:'内敛骚蓝，惊艳炫光',
+                    img:'image/index/o_4.jpg',
+                    hrf:'',
+                    show:false
+                },
+                {
+                    id:1,
+                    name:'[开箱]坚果Pro 2S惊艳开箱',
+                    intro:'全新的炫光蓝及炫光红色想当惊艳',
+                    img:'image/index/o_5.jpg',
+                    hrf:'',
+                    show:false
+                },
+                {
+                    id:2,
+                    name:'[开箱]纯白色坚果Pro2图赏',
+                    intro:'有美如斯，冰清玉洁',
+                    img:'image/index/v_1.jpg',
+                    hrf:'',
+                    show:false
+                },
+                {
+                    id:3,
+                    name:'[合辑]八月优秀摄影作品欣赏',
+                    intro:'8月的优秀作品如期而至',
+                    img:'image/index/v_2.jpg',
+                    hrf:'',
+                    show:false
+                }
+            ],
+            sort:[
+                {
+                    id:0,
+                    name:'综合排序',
+                    show:true
+                },
+                {
+                    id:1,
+                    name:'销量排序',
+                    show:false
+                },
+                {
+                    id:2,
+                    name:'价格低到高',
+                    show:false
+                },
+                {
+                    id:3,
+                    name:'价格高到低',
+                    show:false
+                }
+            ],
+            com:[
+                {
+                    id:0,
+                    name:'坚果 Pro 2S',
+                    intro:'双系统、无限屏',
+                    amout:'$1798.00',
+                    show:false,
+                    s_co:'rgba(0,0,0,1)',
+                    color:[
+                        {
+                            id:0,
+                            co:'rgba(0,0,0,1)',
+                            show:true,
+                            img:''
+                        },
+                        {
+                            id:1,
+                            co:'rgba(159,26,38,1)',
+                            show:false,
+                            img:''
+                        },
+                        {
+                            id:2,
+                            co:'red',
+                            show:false,
+                            img:''
+                        },
+                        {
+                            id:3,
+                            co:'rgba(240,240,240,1)',
+                            show:false,
+                            img:''
+                        }
+                    ]
+                },
+                {
+                    id:1,
+                    name:'坚果 Pro 2 特别版',
+                    intro:'漂亮的不像实力派',
+                    amout:'$1899.00',
+                    show:false,
+                    s_co:'rgba(255,45,45,1)',
+                    color:[
+                        {
+                            id:0,
+                            co:'rgba(255,45,45,1)',
+                            img:'',
+                            show:true
+                        },
+                        {
+                            id:1,
+                            co:'rgba(200,45,86,1)',
+                            img:'',
+                            show:false
+                        },
+                        {
+                            id:2,
+                            co:'rgba(200,150,230,1)',
+                            img:'',
+                            show:false
+                        }
+                    ]
+                },
+                {
+                    id:2,
+                    name:'坚果 R1',
+                    intro:'次时代旗舰手机，内蒙来自未来的',
+                    amout:'$2999.00',
+                    show:false,
+                    s_co:'rgba(36,52,36,1)',
+                    color:[
+                        {
+                            id:0,
+                            co:'rgba(36,52,36,1)',
+                            img:'',
+                            show:true
+                        },
+                        {
+                            id:1,
+                            co:'rgba(230,230,230,1)',
+                            img:'',
+                            show:false
+                        },
+                        {
+                            id:2,
+                            co:'rgba(66,66,66,1)',
+                            img:'',
+                            show:false
+                        }
+                    ]
+                },
+                {
+                    id:3,
+                    name:'坚果3',
+                    intro:'漂亮的不像实力派',
+                    amout:'$1299.00',
+                    show:false,
+                    s_co:'rgba(100,63,52,1)',
+                    color:[
+                        {
+                            id:0,
+                            co:'rgba(100,63,52,1)',
+                            img:'',
+                            show:true
+                        },
+                        {
+                            id:1,
+                            co:'rgba(196,159,186,1)',
+                            img:'',
+                            show:false
+                        },
+                        {
+                            id:2,
+                            co:'rgba(36,45,45,1)',
+                            img:'',
+                            show:false
+                        },
+                        {
+                            id:3,
+                            co:'rgba(85,96,12,1)',
+                            img:'',
+                            show:false
+                        }
+                    ]
+                },
+                {
+                    id:4,
+                    name:'坚果3',
+                    intro:'漂亮的不像实力派',
+                    amout:'$1299.00',
+                    show:false,
+                    s_co:'rgba(100,63,52,1)',
+                    color:[
+                        {
+                            id:0,
+                            co:'rgba(100,63,52,1)',
+                            img:'',
+                            show:true
+                        },
+                        {
+                            id:1,
+                            co:'rgba(196,159,186,1)',
+                            img:'',
+                            show:false
+                        },
+                        {
+                            id:2,
+                            co:'rgba(36,45,45,1)',
+                            img:'',
+                            show:false
+                        },
+                        {
+                            id:3,
+                            co:'rgba(85,96,12,1)',
+                            img:'',
+                            show:false
+                        }
+                    ]
+                }
+            ]
         },
         methods:{
             autpplay:function () {
@@ -636,11 +1387,142 @@ window.onload = function () {
             },
             right:function () {
                 this.lf = '-100%'
+            },
+            comover:function (mid,index,id) {
+                for(var i = 0;i<this.commodity[mid].commod[index].color.length;i++){
+                    this.commodity[mid].commod[index].color[i].show = false;
+                }
+                this.commodity[mid].commod[index].color[id].show = true;
+                this.commodity[mid].commod[index].s_co = this.commodity[mid].commod[index].color[id].co
+            },
+            comenter:function (mid,id) {
+                this.commodity[mid].commod[id].show = true
+            },
+            comout:function (mid,id) {
+                this.commodity[mid].commod[id].show = false
+            },
+            fourenter:function (id) {
+                this.forum[id].show = true
+            },
+            fourout:function (id) {
+                this.forum[id].show = false
+            },
+            cover:function (id) {
+                this.com[id].show = true
+            },
+            cout:function (id) {
+                this.com[id].show = false
+            },
+            spover:function (index,id) {
+                for(var i = 0;i<this.com[index].color.length;i++){
+                    this.com[index].color[i].show = false
+                }
+                this.com[index].color[id].show = true;
+                this.com[index].s_co = this.com[index].color[id].co;
             }
-
         },
         created:function () {
             this.play()
+        }
+    });
+    new Vue({
+        el:'#footer',
+        data:{
+            foot:[
+               {
+                   id:0,
+                   name:'订单服务',
+                   detail:[
+                       {
+                           id:0,
+                           name:'购买指南',
+                           show:false
+                       },
+                       {
+                           id:1,
+                           name:'送货政策',
+                           show:false
+                       }
+                   ]
+               },
+               {
+                   id:1,
+                   name:'服务支持',
+                   detail:[
+                       {
+                           id:0,
+                           name:'自助服务',
+                           show:false
+                       },
+                       {
+                           id:1,
+                           name:'使用帮助',
+                           show:false
+                       },
+                       {
+                           id:2,
+                           name:'维修门店',
+                           show:false
+                       }
+                   ]
+               },
+               {
+                   id:2,
+                   name:'媒体中心',
+                   detail:[
+                       {
+                           id:0,
+                           name:'新闻动态',
+                           show:false
+                       },
+                       {
+                           id:1,
+                           name:'官方视频',
+                           show:false
+                       },
+                       {
+                           id:2,
+                           name:'图片资源',
+                           show:false
+                       }
+                   ]
+               },
+               {
+                   id:3,
+                   name:'关注我们',
+                   detail:[
+                       {
+                           id:0,
+                           name:'新浪微博',
+                           show:false
+                       },
+                       {
+                           id:1,
+                           name:'官方微信',
+                           show:false
+                       },
+                       {
+                           id:2,
+                           name:'荣誉奖项',
+                           show:false
+                       }
+                   ]
+               }
+           ],
+            tel:'400 - 626 - 5666',
+            time:'周一到周日9:00 - 18:00',
+            telintro:'(仅收市话费)',
+            help:'在线帮助',
+            statement:'异界的天乐君版权所有',
+            approval:'savoki999'
+        },
+        methods:{
+            fenter:function (index,id) {
+                this.foot[index].detail[id].show = true
+            },
+            fout:function (index,id) {
+                this.foot[index].detail[id].show = false
+            }
         }
     })
 };

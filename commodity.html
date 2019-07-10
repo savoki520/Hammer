@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>锤子商城</title>
+    <script src="js/vue.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <!--<script src="js/jquery.js"></script>-->
+    <script src="js/index.js"></script>
+</head>
+<body>
+<!--头部导航栏-->
+<header class="header">
+    <div class="header_one">
+        <div class="header_one_imgbox">
+            <div class="header_one_img"></div>
+        </div>
+    </div>
+    <div class="header_two">
+        <div class="header_two_nav">
+            <ul id="nav" class="navul">
+                <li v-for="nav in nav" class="navli" v-bind:class="{navselcet:nav.select}" @click="navli(nav.id)">{{nav.name}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="header_three">
+        <div class="header_three_imgbox">
+            <div class="header_three_imgone"></div>
+            <div class="header_three_imgtwo"></div>
+        </div>
+    </div>
+</header>
+<!--主体-->
+<section class="content">
+    <div class="cnav" id="c_nav" :class="{cnav_po:cnavp}" >
+        <!--导航栏-->
+        <div class="cnav_box">
+            <ul  class="c_navul">
+                <li class="c_navli" v-for="nav in nav" @mouseover="over(nav.id)">{{nav.name}}</li>
+            </ul>
+            <div class="cnav_select">
+                <div class="cnav_select_img"></div>
+                <input type="text" class="cnav_select_input" placeholder="请输入搜索的商品" @focus="foc" @blur="bl">
+                <div class="cnav_select_label" >T恤</div>
+                <div class="sel_box" v-show="sel">
+                    <ul class="sel_ul">
+                        <li class="sel_li" v-for="sa in abc" :class="{selliac:sa.show}"
+                            @mouseover="selover(sa.id)" @mouseout="selout(sa.id)">{{sa.name}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--导航栏分类弹出框-->
+        <div class="nav_content" @mouseout="out()" v-show="navc"  v-bind:class="{navcc:navcc}">
+            <!--手机-->
+            <div class="nav_ctwo" v-if="type === 1">
+                <div class="ctwo_o" v-for="phone in phone">
+                    <div class="ctwo_img"></div>
+                    <div class="ctwo_name">{{phone.name}}</div>
+                    <div class="ctwo_amout">{{phone.amout}}</div>
+                </div>
+            </div>
+            <!--服务-->
+            <div class="nav_cthree" v-else-if="type === 5">
+                <div class="cthree_o" v-for="ser in service">{{ser.name}}</div>
+            </div>
+            <!--首页、官方配件、服饰箱包、畅呼吸-->
+            <div class="nav_cone" v-else>
+                <!--首页子集-->
+                <div class="cone_o" v-if="type === 0">
+                    <ul class="cone_ul" v-for="cate in category[type].first">{{cate.f_name}}
+                        <li class="cone_li" v-for="one in cate.secend">
+                            <img class="cone_li_img" v-bind:src="one.img">
+                            <div class="cone_li_name">{{one.s_name}}</div>
+                        </li>
+                    </ul>
+                </div>
+                <!--非首页子集-->
+                <div class="cone_o" v-else>
+                    <ul class="cone_ul" v-for="cate in category[type-1].first">{{cate.f_name}}
+                        <li class="cone_li" v-for="one in cate.secend">
+                            <img class="cone_li_img" v-bind:src="one.img">
+                            <div class="cone_li_name">{{one.s_name}}</div>
+                        </li></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--主体内容部分-->
+    <div class="commodity" id="main">
+        <div class="commodity_sort">
+            <ul class="sortul">
+                <li class="sortli" v-for="s in sort" :class="{sortactive:s.show}">{{s.name}}</li>
+            </ul>
+        </div>
+        <div class="commodity_content">
+            <ul class="comul">
+                <li class="comli" v-for="c in com" @mouseover="cover(c.id)"
+                    @mouseout="cout(c.id)" :class="{two_item_anima:c.show}">
+                    <div class="comli_item">
+                        <img class="comli_img" src="#" :style="{background:c.s_co}">
+                        <div class="comli_info">
+                            <p class="comli_p">
+                                <span class="comli_sp" v-for="co in c.color":class="{spac:co.show}"
+                                    @mouseover="spover(c.id,co.id)">
+                                    <span class="comli_s" v-bind:style="{background:co.co}"></span>
+                                </span>
+                            </p>
+                            <span class="comli_name">{{c.name}}</span>
+                            <span class="comli_intro">{{c.intro}}</span>
+                            <span class="comli_amout">{{c.amout}}</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!--底部-->
+<footer class="footer" id="footer">
+    <div class="footer_content">
+        <div class="footer_one">
+            <ul class="footer_one_one">
+                <li class="footer_one_li" v-for="f in foot">
+                    <div class="footer_one_lititle">{{f.name}}</div>
+                    <ul class="footer_one_li_ul">
+                        <li class="footer_one_li_ul_li" v-for="d in f.detail" @mouseover="fenter(f.id,d.id)"
+                            @mouseout="fout(f.id,d.id)" v-bind:class="{four_add:d.show}">{{d.name}}</li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="footer_one_two">
+                <li class="footer_tel">{{tel}}</li>
+                <li class="footer_time">{{time}}</li>
+                <li class="footer_telintro">{{telintro}}</li>
+                <li class="footer_help">{{help}}</li>
+            </ul>
+        </div>
+        <div class="footer_two">
+            <div class="footer_statement">{{statement}}</div>
+            <div class="footer_approval">{{approval}}</div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
