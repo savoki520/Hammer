@@ -1350,7 +1350,73 @@ window.onload = function () {
                         }
                     ]
                 }
-            ]
+            ],
+            shop:{
+                name:'坚果“电池形电池”移动电源',
+                intro:'别具一格的“全能型”移动电源',
+                color:[
+                    {
+                        id:0,
+                        co:'',
+                        show:true
+                    },
+                    {
+                        id:1,
+                        co:'',
+                        show:false
+                    },
+                    {
+                        id:2,
+                        co:'',
+                        show:false
+                    },
+                    {
+                        id:3,
+                        co:'',
+                        show:false
+                    }
+                ],
+                version:[
+                    {
+                        id:0,
+                        ver:'手电筒版'
+                    }
+                ],
+                number:1,
+                service:[
+                    {
+                        id:0,
+                        ser:'*拆封后不支持七天无理由退货'
+                    },
+                    {
+                        id:1,
+                        ser:'*标准版坚果“电池形电池”移动电源不搭载LED灯'
+                    }
+                ],
+                firstimg:'',
+                img:[
+                    {
+                        id:0,
+                        url:'',
+                        show:true
+                    },
+                    {
+                        id:1,
+                        url:'',
+                        show:false
+                    },
+                    {
+                        id:2,
+                        url:'',
+                        show:false
+                    },
+                    {
+                        id:3,
+                        url:'',
+                        show:false
+                    }
+                ]
+            }
         },
         methods:{
             autpplay:function () {
